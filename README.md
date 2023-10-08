@@ -23,8 +23,7 @@ The Recipe Finder Web Application is a user-friendly platform designed to simpli
 
 - **Frontend:** HTML, CSS, JavaScript
 - **Backend:** Flask (Python)
-- **External API:** [Specify the Recipe API used]
-
+- **External API:** Edamam API
 
 ## Screenshots or Demo:
 
