@@ -34,9 +34,11 @@ The Recipe Finder Web Application is a user-friendly platform designed to simpli
 
 Future plans for the Recipe Finder Web Application may include:
 
-- **Bookmark and Save:** Users can bookmark or save their favorite recipes for future reference.
+- **Database:** feactures that allows users to save favourite recipe.
 
 - **User Accounts:** Allow users to create accounts for personalized recipe recommendations.
+
+- **Bookmark and Save:** Users can bookmark or save their favorite recipes for future reference.
 
 - **Responsive Design:** Accessible and user-friendly across various devices.
   
