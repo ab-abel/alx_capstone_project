@@ -1,21 +1,20 @@
-from flask import Flask, request
+from flask import Flask, render_template
 
 import requests
 
-
-
-app = Flask('Recipe')
-
+app = Flask('Recipe',template_folder='app/templates',
+            static_folder='app/static')
 
 @app.route('/')
 def hello():
-    return search()
+    hi ='ji'
+    return render_template('recipe/index.html')
 
 app_key  = 'ce7b607fd4979d30ac028afd9897275d'
 app_id = "142ecb9c"
 base_url = 'https://api.edamam.com/api/recipes/v2?type=public&app_id={}&app_key={}&imageSize=REGULAR'.format(app_id,app_key)
 
-async def search():
+def search():
     # diet = 'diets'cl
 
     param = {
