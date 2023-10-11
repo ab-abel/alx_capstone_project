@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="viewport" content="width=device-width, inital-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
+        <title>
+           {% block title %} {% endblock %} - Reciple
+        </title>
+    </head>
+    <body>
+        <header class="bg">
+            <nav class="topnav">
+                <div class="logo">
+                    <img src="images/alx recipe logo.png" alt="Logo"/>
+                </div>
+                <div class="nav-items" id="myTopnav">
+                    <ul class="nav-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#home">Browse</a></li>
+                        <li><a href="#home">Discover</a></li>
+                    </ul>
+                    <div class="icon"><a href="#"><i class="fa fa-bars"></i></a></div>
+                </div>
+            </nav>
+            <div class="dashboard">
+                <h1 class="header-title">Discover Recipe</h1>
+                <p class="header-paragraph">explore the secrete behind best taste </p>
+                <div class="header-form">
+                    <input type="text" placeholder="Search recipe"/>
+                    <!-- <p>|</p> -->
+                    <select>
+                        <option>Select Category</option>
+                        <option>Calories</option>
+                        <option>Diet</option>
+                        <option>Ingredients</option>
+                    </select>
+                    <button type="submit">Search</button>
+                </div>
+            </div>
+        </header>
+
+        
+        <main>
+            {% block main %} {% endblock %}
+        </main>
+
+        <footer>
+            <div class="footer-items">
+                <div class="footer-item-logo">
+                    <img src="images/alx recipe logo.png" alt="Logo" />
+                    <div class="social-media">
+                        <a href="#"><i class="fa fa-linkedin-square"></i></a>
+                        <a href="#"><i class="fa fa-twitter-square"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-link">
+                    <ul>
+                        <li><a href="#home">About Us</a></li>
+                        <li><a href="#home">Contact Us</a></li>
+                        <li><a href="#home">Customer Support</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-subscribe">
+                    <div class="form">
+                        <input class="form" type="email" placeholder="Email" required/>
+                    </div>
+                    <div class="btn">
+                        <button type="submit">Subscribe</button>
+                    </div>
+                    
+                </div>
+            </div>
+            <p>@Alx-Recipe 2023</p>
+        </footer>
+    </body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const burgerMenu = document.querySelector('.icon');
+        const navLinks = document.querySelector('.nav-links');
+
+        burgerMenu.addEventListener('click', function() {
+            navLinks.classList.toggle('show');
+        });
+    });
+    </script>
+</html>
