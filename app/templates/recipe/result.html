@@ -2,25 +2,32 @@
 
 {% block title %}Search{% endblock %}
 {% block main %}
-    <div class="search">
-        <div class="search-img">
-            <img src="../app/static/images/1.jpg" />
-        </div>
-        <div class="search-body">
-            <h1>Lorem Ipesum TItle</h1>
-            <p>calories</p>
-            <div class="rate">
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star" aria-hidden="true"></i>
-                <i class="fa fa-star-half-o" aria-hidden="true"></i>
+
+<br>
+{{results['recipe']}}
+
+    {% for result in results %}
+        <div class="search">
+            <div class="search-img">
+                <img src="{{result['recipe']['images']['THUMBNAIL']['url']}}" alt="Item thumbnail" />
             </div>
-            <p>Ingredients for recipe</p>
+            <div class="search-body">
+                <h1>Lorem Ipesum TItle</h1>
+                <p>calories</p>
+                <div class="rate">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                </div>
+                <p>Ingredients for recipe</p>
+            </div>
+            <div class="search-btn">
+                <button type="submit"> Add to Cart</button>
+                <button type="submit">Details</button>
+            </div>
         </div>
-        <div class="search-btn">
-            <button type="submit"> Add to Cart</button>
-            <button type="submit">Details</button>
-        </div>
-    </div>
+    {% endfor %}
+
 {% endblock %}
