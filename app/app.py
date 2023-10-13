@@ -10,6 +10,11 @@ def hello():
     hi ='ji'
     return render_template('recipe/index.html')
 
+@app.route('/test')
+def test():
+    data = api_call()
+    return render_template('recipe/test.html', results = data['hits'])
+
 @app.route('/search')
 def search():
     data = api_call()
