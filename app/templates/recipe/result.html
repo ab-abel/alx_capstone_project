@@ -21,7 +21,7 @@
                     <i class="fa fa-star" aria-hidden="true"></i>
                     <i class="fa fa-star-half-o" aria-hidden="true"></i>
                 </div>
-                <p>Ingredients for recipe</p>
+                <p>Calories: {{result['recipe']['calories']|round(2)}} | Total Weight: {{result['recipe']['totalWeight']|round(2)}}</p>
             </div>
             <div class="search-btn">
                 <button type="submit"> Add to Cart</button>
