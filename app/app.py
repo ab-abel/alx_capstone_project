@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import json
 import requests
 
@@ -18,7 +18,7 @@ def test():
 @app.route('/search')
 def search():
     data = api_call()
-    return render_template('recipe/result.html', results = data['hits'])
+    return render_template('recipe/result.html', results = data)
 
 
 app_key  = 'ce7b607fd4979d30ac028afd9897275d'
