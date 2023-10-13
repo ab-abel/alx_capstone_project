@@ -12,16 +12,23 @@
     </head>
     <body>
         <head>
-                <div class="content">
-                    <div class="image">
-                        <img src="{{ url_for('static', filename='images/1jpg')}}" />
+                <div class="search">
+                    <div class="search-img">
+                        <img src="../app/static/images/1.jpg" />
                     </div>
-                    <div class="content">
+                    <div class="search-body">
                         <h1>Lorem Ipesum TItle</h1>
                         <p>calories</p>
+                        <div class="rate">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                        </div>
                         <p>Ingredients for recipe</p>
                     </div>
-                    <div class="btn">
+                    <div class="search-btn">
                         <button type="submit"> Add to Cart</button>
                         <button type="submit">Details</button>
                     </div>

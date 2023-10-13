@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-
+import json
 import requests
 
 app = Flask('Recipe',template_folder='app/templates',
@@ -9,6 +9,12 @@ app = Flask('Recipe',template_folder='app/templates',
 def hello():
     hi ='ji'
     return render_template('recipe/index.html')
+
+@app.route('/search')
+def search():
+
+    return render_template('recipe/result.html')
+
 
 app_key  = 'ce7b607fd4979d30ac028afd9897275d'
 app_id = "142ecb9c"
@@ -23,7 +29,7 @@ def search():
     }
 
     resp = requests.get(base_url, params=param)
-    data = resp.json()
+    data = json.loads(resp.text)
 
     # print(data)
     return data
