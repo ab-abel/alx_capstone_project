@@ -32,15 +32,15 @@
                 <div class="alert" id='alert'>
                                     
                 </div>
-                <form action="/" method="POST">
+                <form action="/search" method="POST">
                     <div class="header-form">        
-                        <input type="text" placeholder="Search recipe"/>
+                        <input type="text" name='search' placeholder="Search recipe"/>
                         <!-- <p>|</p> -->
-                        <select id='select-id'>
-                            <option>Select Category</option>
+                        <select id='select-id' name='select'>
+                            <option value='0'>Select Category</option>
                             <option value='1'>Calories</option>
-                            <option>Diet</option>
-                            <option value=2>Ingredients</option>
+                            <option value='2'>Diet</option>
+                            <option value='3'>Ingredients</option>
                         </select>
                         <button type="submit">Search</button>
                     </div>

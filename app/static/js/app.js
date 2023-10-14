@@ -23,7 +23,7 @@ select.addEventListener('change', (e)=>{
         
     }
 
-    else if(select.value == '2') {
+    else if(select.value == '3') {
         const span = document.createElement('span');
         span.setAttribute('class', 'close-alert');
         span.innerHTML = '&times;';
