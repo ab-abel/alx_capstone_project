@@ -28,17 +28,23 @@
             <div class="dashboard">
                 <h1 class="header-title">Discover Recipe</h1>
                 <p class="header-paragraph">explore the secrete behind best taste </p>
-                <div class="header-form">
-                    <input type="text" placeholder="Search recipe"/>
-                    <!-- <p>|</p> -->
-                    <select>
-                        <option>Select Category</option>
-                        <option>Calories</option>
-                        <option>Diet</option>
-                        <option>Ingredients</option>
-                    </select>
-                    <button type="submit">Search</button>
+               
+                <div class="alert" id='alert'>
+                                    
                 </div>
+                <form action="/" method="POST">
+                    <div class="header-form">        
+                        <input type="text" placeholder="Search recipe"/>
+                        <!-- <p>|</p> -->
+                        <select id='select-id'>
+                            <option>Select Category</option>
+                            <option value='1'>Calories</option>
+                            <option>Diet</option>
+                            <option value=2>Ingredients</option>
+                        </select>
+                        <button type="submit">Search</button>
+                    </div>
+                </form>
             </div>
         </header>
 
@@ -78,6 +84,7 @@
             <p>@Alx-Recipe 2023</p>
         </footer>
     </body>
+    <script src="{{url_for('static', filename='js/app.js')}}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
         const burgerMenu = document.querySelector('.icon');
