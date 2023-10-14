@@ -13,17 +13,34 @@ def hello():
 @app.route('/test')
 def test():
     data = api_call()
-    return render_template('recipe/test.html', results = data['hits'])
+    return render_template('recipe/test.html', results = data)
 
-@app.route('/search')
-def search():
+@app.route('/searchh')
+def searche():
     data = api_call()
     return render_template('recipe/result.html', results = data)
 
 
+@app.route('/search',  methods=['GET', 'POST'])
+def search():
+    search = request.form['search']
+    select = request.form['select']
+    data = [search, select]
+    # data=''
+    
+    return render_template('recipe/test.html', results = data)
+
+
 app_key  = 'ce7b607fd4979d30ac028afd9897275d'
 app_id = "142ecb9c"
-base_url = 'https://api.edamam.com/api/recipes/v2?type=public&app_id={}&app_key={}&imageSize=REGULAR'.format(app_id,app_key)
+
+
+    # diet = ['high-protein','low-carb','low-fat', 'low-sodium', 'balanced', 'high-fiber']
+    # base_url = 'https://api.edamam.com/api/recipes/v2?type=public&app_id={}&app_key={}&imageSize=REGULAR'.format(app_id,app_key)
+    # base_url = 'https://api.edamam.com/api/recipes/v2?type=public&app_id={}&app_key={}&q=Sweet'.format(app_id,app_key)
+    # base_url = 'https://api.edamam.com/api/recipes/v2?type=public&app_id={}&app_key={}&ingr=1-2'.format(app_id,app_key)
+    # base_url = 'https://api.edamam.com/api/recipes/v2?type=public&app_id={}&app_key={}&diet=low-fat'.format(app_id,app_key)
+base_url = 'https://api.edamam.com/api/recipes/v2?type=public&app_id={}&app_key={}&calories=100-200'.format(app_id,app_key)
 
 def api_call():
     # diet = 'diets'cl
