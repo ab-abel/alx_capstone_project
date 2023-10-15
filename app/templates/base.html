@@ -21,6 +21,7 @@
                         <li><a href="#home">Home</a></li>
                         <li><a href="#home">Browse</a></li>
                         <li><a href="#home">Discover</a></li>
+                        <li><a href="#home" class="cart">Cart</a><span class="cart-item">0<span></li>
                     </ul>
                     <div class="icon"><a href="#"><i class="fa fa-bars"></i></a></div>
                 </div>
@@ -86,6 +87,7 @@
     </body>
     <script src="{{url_for('static', filename='js/app.js')}}"></script>
     <script src="{{url_for('static', filename='js/validate.js')}}"></script>
+    <script src="{{url_for('static', filename='js/cart.js')}}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
         const burgerMenu = document.querySelector('.icon');
