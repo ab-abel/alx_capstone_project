@@ -4,7 +4,7 @@
 {% block main %}
 
 <br>
-    <h2 style="text-align:center; margin-top :2rem">Search result {{results['from']}} to {{results['to']}} of {{results['count']}} </h2>
+    <h2 style="text-align:center; margin-top :2rem">Search result {{results['from']}} to {{results['to']}} of {{results['count']}} for {{search}}</h2>
     {% for result in results['hits'] %}
         <div class="search">
             <div class="search-img">

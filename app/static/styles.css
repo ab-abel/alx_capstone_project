@@ -148,9 +148,6 @@ nav {
 }
 
 /* alert for pop up on select */
-.alert {
-
-}
 .alert p{
   
     background-color: #8FC646;
@@ -161,7 +158,8 @@ nav {
     margin-top: auto;
     /* margin-bottom: .2rem; */
     border-radius: .5rem;
-    padding: 0 0 0 0;
+    
+
 }
 
 .close-alert {

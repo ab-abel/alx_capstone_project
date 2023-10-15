@@ -9,7 +9,7 @@ select.addEventListener('change', (e)=>{
     e.preventDefault();
     document.getElementById('alert').innerHTML = '';
 
-    if(select.value == '1'){
+    if(select.value == 1){
         const span = document.createElement('span');
         span.setAttribute('class', 'close-alert');
         span.innerHTML = '&times;';
@@ -23,7 +23,7 @@ select.addEventListener('change', (e)=>{
         
     }
 
-    else if(select.value == '3') {
+    else if(select.value == 3) {
         const span = document.createElement('span');
         span.setAttribute('class', 'close-alert');
         span.innerHTML = '&times;';

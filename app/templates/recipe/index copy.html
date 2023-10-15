@@ -7,20 +7,40 @@
             <h1>Top Recipe</h1>
         </div>
         <div class="top-recipe-items">
-            {% for result in results['hits'] %}
             <div class="top-recipe-item">
-                <img src="{{result['recipe']['images']['SMALL']['url']}}" alt="Recipe image">
-                <h2><a href="#" style="color:black; hover::color:green">{{result['recipe']['label']}}</a></h2>
-                <p>Source: {{result['recipe']['source']}} | {{len(result['recipe']['ingredients'])}}</p>
-                <a href="{{result['recipe']['uri']}}">...Learn more</a>
+                <img src="images/1.jpg" alt="Recipe image">
+                <h2>Loren Ipesum</h2>
+                <p>short description about 
+                    this category</p>
+                <a href="#">...Learn more</a>
             </div>
-            {%endfor%}
+            <div class="top-recipe-item">
+                <img src="images/2.jpg" alt="Recipe image">
+                <h2>Loren Ipesum</h2>
+                <p>short description about 
+                    this category</p>
+                <a href="#">...Learn more</a>
+            </div>
+            <div class="top-recipe-item">
+                <img src="images/3.jpg" alt="Recipe image">
+                <h2>Loren Ipesum</h2>
+                <p>short description about 
+                    this category</p>
+                <a href="#">...Learn more</a>
+            </div>
+            <div class="top-recipe-item">
+                <img src="images/4.jpg" alt="Recipe image">
+                <h2>Loren Ipesum</h2>
+                <p>short description about 
+                    this category</p>
+                <a href="#">...Learn more</a>
+            </div>
         </div>
     </section>
 
     <section class="recipe-count">
         <div class="recipe-count-items">  
-            <h1>More than {{results['count']}} Recipe</h1>
+            <h1>More than 3000 Recipe</h1>
             <p>explore the secrete behind best taste </p>
             <div><button type="submit">View All</button></div>
         </div>
