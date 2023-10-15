@@ -33,7 +33,7 @@
                 {% for i in range(3) %}
                     <div class="category-item">
                         <img src="{{results['hits'][i]['recipe']['ingredients'][i]['image']}}" alt="Item"/>
-                        <h2>Food: {{results['hits'][i]['recipe']['ingredients'][i]['food']}} </h2>
+                        <h2>Ingredients: {{results['hits'][i]['recipe']['ingredients'][i]['food']}} </h2>
                         <p><b>Preparation:</b> {{results['hits'][i]['recipe']['ingredients'][i]['text']}} </p>
                         <p><b>Food Category:</b> {{results['hits'][i]['recipe']['ingredients'][i]['foodCategory']}} || 
                             <b>Weight:</b> {{results['hits'][i]['recipe']['ingredients'][i]['weight']|round(2)}}g </p>
