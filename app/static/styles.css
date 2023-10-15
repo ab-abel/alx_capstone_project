@@ -230,11 +230,13 @@ nav {
     justify-content: center;
     align-items: center;
     margin-bottom: 5rem;
+    
 }
 
 .top-recipe-header h1{
     padding: 2rem;
     font-size: var(--font-size-xl-large);
+    
 }
 
 .top-recipe-items{
@@ -245,20 +247,30 @@ nav {
 }
 
 .top-recipe-item{
-    /* width: 5px; */
-    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     box-shadow: 1px 1px 5px 1px grey;
     margin: 1rem;
     padding: .5rem;
+    width: 300px;
+    
 }
 
 
 .top-recipe-item h2{
-    /* width: 5px; */
-    /* border: 1px solid red; */
-    /* margin: 1rem; */
     padding-top: 1rem;
     font-size: var(--font-size-medium);
+    
+}
+
+.top-recipe-item a{
+    color: var(--color-secondary);
+    padding-top: 1rem;
+}
+
+.top-recipe-item a:hover{
+    color: #8aee07;
 }
 
 /* recipe count */
