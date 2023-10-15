@@ -123,6 +123,25 @@ nav {
     font-size: var(--font-size-medium);
 }
 
+.cart {
+    position: relative;
+}
+
+/* Cart items */
+.cart-item {
+    position: absolute;
+    background: chartreuse;
+    border-radius: 50%;
+    padding-top: inherit;
+    z-index: 1;
+    margin-top: -1rem;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    font-size: var(--font-size-small);
+    color: var(--color-primary);
+}
+
 .dashboard {
     display: flex;
     flex-direction:column;
