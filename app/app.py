@@ -10,14 +10,14 @@ def hello():
     data = querry_api()
     return render_template('recipe/index.html',results =data)
 
-# @app.route('/test')
-# def test():
-#     data = api_call()
-#     return render_template('recipe/test.html', results = data)
+@app.route('/test')
+def test():
+    data = querry_api()
+    return render_template('recipe/test.html', results = data)
 
-# @app.route('/searchh')
+# @app.route('/searchh')  
 # def searche():
-#     data = api_call()
+#     data = api_call() 
 #     return render_template('recipe/result.html', results = data)
 
 @app.route('/search',  methods=['POST'])
