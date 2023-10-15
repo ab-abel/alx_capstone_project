@@ -4,10 +4,10 @@
 {% block main %}
     <section class="top-recipe">
         <div class="top-recipe-header">
-            <h1>Top Recipe</h1>
+            <h1><b style="color:chartreuse">Top</b> Recipe</h1>
         </div>
         <div class="top-recipe-items">
-            {% for i in range(4) %}
+            {% for i in range(6) %}
             <div class="top-recipe-item">
                 <img src="{{results['hits'][i]['recipe']['images']['SMALL']['url']}}" alt="Recipe image">
                 <h2><a href="#" style="color:black; hover::color:green">{{results['hits'][i]['recipe']['label']}}</a></h2>
@@ -20,7 +20,7 @@
 
     <section class="recipe-count">
         <div class="recipe-count-items">  
-            <h1>More than {{results['count']}} Recipe</h1>
+            <h1>More than <em style="color:chartreuse">{{results['count']}}</em> Recipe</h1>
             <p>explore the secrete behind best taste </p>
             <div><button type="submit">View All</button></div>
         </div>
@@ -28,7 +28,7 @@
     </section>
     <section >
         <div class="categories">
-            <div class="category-header"><h1>Popular Ingredients</h1></div>
+            <div class="category-header"><h1>Popular <b style="color:chartreuse">Ingredients</b></h1></div>
             <div class="category-items">
                 {% for i in range(3) %}
                     <div class="category-item">
