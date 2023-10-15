@@ -7,12 +7,12 @@
             <h1>Top Recipe</h1>
         </div>
         <div class="top-recipe-items">
-            {% for result in results['hits'] %}
+            {% for i in range(4) %}
             <div class="top-recipe-item">
-                <img src="{{result['recipe']['images']['SMALL']['url']}}" alt="Recipe image">
-                <h2><a href="#" style="color:black; hover::color:green">{{result['recipe']['label']}}</a></h2>
-                <p>Source: {{result['recipe']['source']}} | {{len(result['recipe']['ingredients'])}}</p>
-                <a href="{{result['recipe']['uri']}}">...Learn more</a>
+                <img src="{{results['hits'][i]['recipe']['images']['SMALL']['url']}}" alt="Recipe image">
+                <h2><a href="#" style="color:black; hover::color:green">{{results['hits'][i]['recipe']['label']}}</a></h2>
+                <p>Source: {{results['hits'][i]['recipe']['source']}} | {{results['hits'][i]['recipe']['ingredients']|length}} Ingredients</p>
+                <a href="{{results['hits'][i]['recipe']['uri']}}">...Learn more</a>
             </div>
             {%endfor%}
         </div>
@@ -30,11 +30,13 @@
         <div class="categories">
             <div class="category-header"><h1>Popular Categories</h1></div>
             <div class="category-items">
-                <div class="category-item">
-                    <img src="images/5.jpeg" alt="Item"/>
-                    <h2>Lorem Ipesum</h2>
-                    <p>short irem descriptions Lorem ipesum</p>
-                </div>
+                {% for i in range(6,8)%}
+                    <div class="category-item">
+                        <img src="images/5.jpeg" alt="Item"/>
+                        <h2>Lorem Ipesum</h2>
+                        <p>short irem descriptions Lorem ipesum</p>
+                    </div>
+                {%endfor%}
                 <div class="category-item">
                     <img src="images/5.jpeg" alt="Item"/>
                     <h2>Lorem Ipesum</h2>
