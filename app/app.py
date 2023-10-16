@@ -76,7 +76,6 @@ def querry_api(querry_string =None, select_category=None):
     # base_url = 'https://api.edamam.com/api/recipes/v2?type=public&app_id={}&app_key={}&ingr=1-2'.format(app_id,app_key)
     # base_url = 'https://api.edamam.com/api/recipes/v2?type=public&app_id={}&app_key={}&diet=low-fat'.format(app_id,app_key)
     # base_url = 'https://api.edamam.com/api/recipes/v2?type=public&app_id={}&app_key={}&calories=100-200'.format(app_id,app_key)
-
 def api_call():
     # diet = 'diets'cl
     app_key  = 'ce7b607fd4979d30ac028afd9897275d'

@@ -107,3 +107,6 @@ const isNumeric = (password) => {
     const re = new RegExp("^(?=.*[0-9])");
     return re.test(password);
 }
+
+
+
