@@ -2,5 +2,30 @@
 
 {% block title %}Search{% endblock %}
 {% block main %}
-
+    <section class="top-recipe">
+        <div class="top-recipe-header">
+            <h1><b style="color:#8FC646">Your</b> Cart <i class="fa fa-shopping-cart"></i></h1>
+        </div>
+        <div class="top-recipe-items">
+            {% for i in range(results_count|length) %}
+            <div class="top-recipe-item">
+                <img class="cart-image" src="{{results[i]['hits'][0]['recipe']['images']['SMALL']['url']}}" alt="Recipe image">
+                    <span class="cart-counter">
+                        {{results_count[i]}}
+                    </span>
+                <h2>
+                    <a href="{{results[i]['hits'][0]['recipe']['uri']}}" style="color:black; hover::color:green">
+                        {{results[i]['hits'][0]['recipe']['label']}}
+                    </a>
+                </h2>
+                <p>Source: {{results[i]['hits'][0]['recipe']['source']}} | {{results[i]['hits'][0]['recipe']['ingredients']|length}} Ingredients</p>
+                <div class="top-recipe-item-btn">
+                    <button style="margin-right:.1rem"  class="button">Add to Favourite <i class="fa fa-heart"></i></button>
+                    <button style="margin-left:.1rem" id='cart-btn' value="{{results[i]['hits'][0]['recipe']['uri']}}" class="button">Remove from Cart <i class="fa fa-shopping-cart"></i></button>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </section>
+{{results[0]['hits'][0]['recipe']}}
 {%endblock%}

@@ -39,15 +39,18 @@ select.addEventListener('change', (e)=>{
 
 const cart = document.getElementById('cart-btn');
 
-cart.addEventListener('click', (e)=> {
-    // e.preventDefault();
+if(cart) {
+    cart.addEventListener('click', (e)=> {
+        // e.preventDefault();
+    
+        // add 
+        // console.log(cart.value);
+        addItemToCart(cart.value);
+        // saveScore(cart.value)
+    
+    })
+}
 
-    // add 
-    // console.log(cart.value);
-    addItemToCart(cart.value);
-    // saveScore(cart.value)
-
-})
 
 // this function add item to the session storage
 function addItemToCart(item) {
@@ -73,24 +76,24 @@ function addItemToCart(item) {
     displayCart();
 }
 
-    // Return the avaialble cart from the storage
-    function getCartFromStorage() {
+// Return the avaialble cart from the storage
+function getCartFromStorage() {
 
-        // check if there is item in the session storage
-        if(sessionStorage.length >= 0){
+    // check if there is item in the session storage
+    if(sessionStorage.length >= 0){
 
-            // convert the item to JSON object 
-            const cart_object = JSON.parse(localStorage.getItem('cart'));
+        // convert the item to JSON object 
+        const cart_object = JSON.parse(localStorage.getItem('cart'));
 
-            // return the value
-            return cart_object;
+        // return the value
+        return cart_object;
 
-        } else {
+    } else {
 
-            // this code block run if the session storage is empty
-            return '';
-        }
+        // this code block run if the session storage is empty
+        return '';
     }
+}
 
 
 function displayCart(){
@@ -120,7 +123,35 @@ function displayCart(){
 
         })
     }
-
-
 }
 
+//  add uri to the cart li
+const add_href = document.getElementById('cart');
+// const cart_li = document.getElementById('');
+// add_href.setAttribute('href', '/cart/1');
+// add_href.setAttribute('value', `${JSON.stringify(getCartFromStorage())}`)
+
+// cart_li.appendChild(add_href);
+console.log(typeof(JSON.stringify(getCartFromStorage())));
+
+add_href.addEventListener('click', ()=>{
+    data_to_send = getCartFromStorage();
+    fetch('/cart', {
+        method:'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data_to_send), 
+        
+    }).then(response=>{
+            
+        if(response.redirected){
+            // console.log(response.url[0])
+            window.location.href = response.url;
+        }else{
+            response.json();  
+        }
+     });
+
+})
+    

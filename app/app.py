@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, url_for,redirect
 import json
 import requests
+import ast
 
 app = Flask('Recipe',template_folder='app/templates',
             static_folder='app/static')
@@ -30,9 +31,27 @@ def detail():
 
 
 
-@app.route('/cart')
+@app.route('/cart', methods=['POST'])
 def cart():
-    return render_template('recipe/cart.html')
+    data = request.get_json()
+    # print(type(data))
+    return redirect(url_for('cart_display', data = data))
+
+@app.route('/cart_display')
+def cart_display():
+    data = request.args.get('data')
+    data_to_json = ast.literal_eval(data)
+    cart_dict_v = []
+    cart_dict_k = []
+    for k,v in data_to_json.items():
+        cart_dict_k.append(v)
+        cart_dict_v.append(query_uri(k))
+        
+    return render_template('recipe/cart.html',
+                           results = cart_dict_v,
+                           results_count = cart_dict_k)
+
+
 
 @app.route('/search',  methods=['POST'])
 def process_data():

@@ -761,3 +761,18 @@ footer p {
   flex-direction: column;
   padding-left: 1rem;
 }
+
+/* counter for cart items image overlay*/
+.cart-image {
+    position: relative;
+}
+.cart-counter {
+    position: absolute;
+    color:--color-primary;
+    background: #F7F7F7;
+    width: 100px;
+    font-size:var(--font-size-x-large);
+    text-align: center;
+    /* padding: 1.2rem; */
+
+}
