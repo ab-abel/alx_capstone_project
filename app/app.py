@@ -40,13 +40,16 @@ def cart():
 @app.route('/cart_display')
 def cart_display():
     data = request.args.get('data')
-    data_to_json = ast.literal_eval(data)
-    cart_dict_v = []
-    cart_dict_k = []
-    for k,v in data_to_json.items():
-        cart_dict_k.append(v)
-        cart_dict_v.append(query_uri(k))
-        
+    if data:
+        data_to_json = ast.literal_eval(data)
+        cart_dict_v = []
+        cart_dict_k = []
+        for k,v in data_to_json.items():
+            cart_dict_k.append(v)
+            cart_dict_v.append(query_uri(k))
+    else:
+          cart_dict_v = []
+          cart_dict_k = []
     return render_template('recipe/cart.html',
                            results = cart_dict_v,
                            results_count = cart_dict_k)
@@ -76,6 +79,15 @@ def search_recipe():
     return render_template('recipe/result.html',
                            results = results,
                            search=search)
+
+
+@app.route('/about')
+def about():
+    return render_template('profile/about.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('profile/contact.html')
 
 
 def querry_api(querry_string =None, select_category=None):
