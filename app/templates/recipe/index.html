@@ -13,8 +13,8 @@
                 <h2><a href="{{results['hits'][i]['recipe']['uri']}}" style="color:black; hover::color:green">{{results['hits'][i]['recipe']['label']}}</a></h2>
                 <p>Source: {{results['hits'][i]['recipe']['source']}} | {{results['hits'][i]['recipe']['ingredients']|length}} Ingredients</p>
                 <div class="top-recipe-item-btn">
-                    <button style="margin-right:.1rem" class="button">Add to Favourite <i class="fa fa-heart"></i></button>
-                    <button style="margin-left:.1rem" class="button">Add to Cart <i class="fa fa-shopping-cart"></i></button>
+                    <button style="margin-right:.1rem"  class="button">Add to Favourite <i class="fa fa-heart"></i></button>
+                    <button style="margin-left:.1rem" id='cart-btn' value="{{results['hits'][i]['recipe']['uri']}}" class="button">Add to Cart <i class="fa fa-shopping-cart"></i></button>
                 </div>
             </div>
             {%endfor%}

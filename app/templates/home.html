@@ -32,7 +32,7 @@
                 <p><b>Cuisine Type: </b>{{result['recipe']['cuisineType'][0]}}</p> 
                 <p><b>Meal Type: </b>{{result['recipe']['mealType'][0]}}</p>
                 <button class="button" type="submit"> Add to Favourite <i class="fa fa-heart"></i></button>
-                <button class="button" type="submit"> Add to Cart <i class="fa fa-shopping-cart"></i></button>
+                <button class="button" id='cart-btn' value="{{result['recipe']['uri']}}" type="submit"> Add to Cart <i class="fa fa-shopping-cart"></i></button>
             </div>
         {%endfor%}
     </div>

@@ -16,7 +16,7 @@ select.addEventListener('change', (e)=>{
        
         const p = document.createElement('p');
         p.style.margin = 0;
-        p.innerHTML = 'Hint: Enter 100-300 to search Calories between that range';
+        p.innerHTML = 'Keyword Hint: American, Asian, British, Chinese, Central Europe, French, India';
         alert.appendChild(span);
         alert.appendChild(p);
         span.setAttribute('onclick',"this.parentElement.style.display='none'")
