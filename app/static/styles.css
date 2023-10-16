@@ -132,9 +132,8 @@ nav {
     position: absolute;
     background: chartreuse;
     border-radius: 50%;
-    padding-top: inherit;
     z-index: 1;
-    margin-top: -1rem;
+    margin-top: -.5rem;
     width: 25px;
     height: 25px;
     text-align: center;
