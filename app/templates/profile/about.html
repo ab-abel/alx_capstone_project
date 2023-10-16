@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Search{% endblock %}
+{% block main %}
+<section class="top-recipe">
+    <div class="top-recipe-header">
+        <h1><b style="color:#8FC646">About</b> Us <i class="fa fa-user" aria-hidden="true"></i></h1>
+    </div>
+    <div class="card">
+        <img src="{{url_for('static',filename='images/abel.jpg')}}" alt="Abel" style="width:100%">
+        <h1>Abel Enagbonmhena</h1>
+        <p class="title">Techie & Student, @ALX</p>
+        <p>Obafemi Awolowo University</p>
+        <a href="#"><i class="fa fa-dribbble"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-linkedin"></i></a>
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <p><button>Contact</button></p>
+    </div>
+</div>
+{%endblock %}
