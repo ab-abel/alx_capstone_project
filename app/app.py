@@ -20,14 +20,19 @@ def test():
     data = querry_api()
     return render_template('recipe/test.html', results = data)
 
+
 @app.route('/details', methods=['POST'])
 def detail():
     # uri = request.form.get('item-details')
     uri = request.form['item-details']
     data = query_uri(uri)
-    return render_template('home.html', results = data)
+    return render_template('recipe/detail.html', results = data)
 
 
+
+@app.route('/cart')
+def cart():
+    return render_template('recipe/cart.html')
 
 @app.route('/search',  methods=['POST'])
 def process_data():
