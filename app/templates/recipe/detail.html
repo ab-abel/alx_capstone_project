@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Search{% endblock %}
+{% block main %}
+
+<div style="margin:10%">
+
+</div>
+<div class="details">
+    <div class="detail-header">
+        <h2>Product details</h2>
+    </div>
+    <div class="detail-body">
+        {% for result in results['hits'] %}
+            <div class="detail-body-row">
+                <img style="width:200px"src="{{result['recipe']['images']['SMALL']['url']}}" alt="Product image"/>
+                <div class="table-container">
+                    <table>
+                        <tr>
+                            <th><p>Ingredients</p></th>
+                        </tr>
+                        {% for ingredient in result['recipe']['ingredients'] %}
+                            <tr>
+                                <td><p>{{ingredient['text']}}</p></td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+            <div class="detail-header">
+                <p><b>{{result['recipe']['label']}}</b></p>
+                <p><b>Cuisine Type: </b>{{result['recipe']['cuisineType'][0]}}</p> 
+                <p><b>Meal Type: </b>{{result['recipe']['mealType'][0]}}</p>
+                <button class="button" type="submit"> Add to Favourite <i class="fa fa-heart"></i></button>
+                <button class="button" id='cart-btn' value="{{result['recipe']['uri']}}" type="submit"> Add to Cart <i class="fa fa-shopping-cart"></i></button>
+            </div>
+        {%endfor%}
+    </div>
+</div>
+
+{%endblock%}
