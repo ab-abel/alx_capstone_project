@@ -37,10 +37,10 @@ search_btn.addEventListener('click', (e)=>{
         }
     }
     else if (select_val == 1) {
-        if(isRequired(search) && isNumeric(search) && !isSpecialCharacters(search)) {
+        if(isRequired(search) && !isNumeric(search) && !isSpecialCharacters(search)) {
             isValid = true;
         }else{
-            alert_p.innerHTML = 'Calories Field must be an integer or a Range of value seprated by -';
+            alert_p.innerHTML = 'Cusine Type Field Must be a String Example: America';
             alert_p.style.color = 'red';
             alert_p.style.padding = '.5rem';
             isValid = false;
