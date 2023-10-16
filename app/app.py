@@ -15,10 +15,9 @@ def test():
     data = querry_api()
     return render_template('recipe/test.html', results = data)
 
-# @app.route('/searchh')  
-# def searche():
-#     data = api_call() 
-#     return render_template('recipe/result.html', results = data)
+@app.route('/details')
+def detail():
+    return render_template('recipe/detail.html')
 
 @app.route('/search',  methods=['POST'])
 def process_data():
