@@ -43,8 +43,8 @@ def search_recipe():
     select = request.args.get('select')
     results = querry_api(search, select)
 
-    search_data = ['','Cuisine Type','Diets','Ingredients']
-    if select == '0':
+    search_data = ['','','Diets','Ingredients']
+    if select == '0' or select == '1':
         search = search
     else:
         search = search_data[int(select)]
