@@ -4,15 +4,18 @@
 {% block main %}
     <section class="top-recipe">
         <div class="top-recipe-header">
-            <h1><b style="color:chartreuse">Top</b> Recipe</h1>
+            <h1><b style="color:#8FC646">Top</b> Recipe</h1>
         </div>
         <div class="top-recipe-items">
             {% for i in range(6) %}
             <div class="top-recipe-item">
                 <img src="{{results['hits'][i]['recipe']['images']['SMALL']['url']}}" alt="Recipe image">
-                <h2><a href="#" style="color:black; hover::color:green">{{results['hits'][i]['recipe']['label']}}</a></h2>
+                <h2><a href="{{results['hits'][i]['recipe']['uri']}}" style="color:black; hover::color:green">{{results['hits'][i]['recipe']['label']}}</a></h2>
                 <p>Source: {{results['hits'][i]['recipe']['source']}} | {{results['hits'][i]['recipe']['ingredients']|length}} Ingredients</p>
-                <a href="{{results['hits'][i]['recipe']['uri']}}">...Learn more</a>
+                <div class="top-recipe-item-btn">
+                    <button style="margin-right:.1rem" class="button">Add to Favourite <i class="fa fa-heart"></i></button>
+                    <button style="margin-left:.1rem" class="button">Add to Cart <i class="fa fa-shopping-cart"></i></button>
+                </div>
             </div>
             {%endfor%}
         </div>
@@ -20,15 +23,15 @@
 
     <section class="recipe-count">
         <div class="recipe-count-items">  
-            <h1>More than <em style="color:chartreuse">{{results['count']}}</em> Recipe</h1>
+            <h1>More than <em style="color:#8FC646">{{results['count']}}</em> Recipe</h1>
             <p>explore the secrete behind best taste </p>
-            <div><button type="submit">View All</button></div>
+            <div><button  class="button" type="submit">View All <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i></button></div>
         </div>
 
     </section>
     <section >
         <div class="categories">
-            <div class="category-header"><h1>Popular <b style="color:chartreuse">Ingredients</b></h1></div>
+            <div class="category-header"><h1>Popular <b style="color:#8FC646;">Ingredients</b></h1></div>
             <div class="category-items">
                 {% for i in range(3) %}
                     <div class="category-item">

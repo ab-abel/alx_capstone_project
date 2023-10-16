@@ -23,10 +23,13 @@
                 <p>Calories: {{result['recipe']['calories']|round(2)}} | Total Weight: {{result['recipe']['totalWeight']|round(2)}}</p>
             </div>
             <div class="search-btn">
-                <button class="cart-btn" id='cart-btn' value="{{result['recipe']['uri']}}" type="submit">
-                     Add to Cart
+                <button class="cart-btn button" id='cart-btn' value="{{result['recipe']['uri']}}" type="submit">
+                     Add to Cart <i class="fa fa-shopping-cart"></i>
                 </button>
-                <button type="submit">Details</button>
+                <form method='POST' action="/details">
+                    <input type="text" name='item-details' value="{{result['recipe']['uri']}}" hidden/>
+                    <button type="submit" class="button">Details <i class="fa fa-info-circle"></i></button>
+                </form>
             </div>
         </div>
     {% endfor %}
