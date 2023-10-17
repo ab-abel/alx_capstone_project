@@ -163,6 +163,7 @@ function displayCart(){
 //  add uri to the cart li
 function send_cart_to_backend(){
     const add_href = document.getElementById('cart');
+    add_href.style.cursor = 'pointer';
     add_href.addEventListener('click', ()=>{
         data_to_send = getCartFromStorage();
         fetch('/cart', {
