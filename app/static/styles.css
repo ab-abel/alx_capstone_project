@@ -776,7 +776,7 @@ footer p {
     color:var(--color-button);
     font-weight: bold;
     background: #F7F7F7;
-    width: 100px;
+    width: 190px;
     font-size:var(--font-size-x-large);
     text-align: center;
     /* padding: 1.2rem; */
@@ -829,7 +829,9 @@ footer p {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    width: 200px;
 }
+
 .conact-form form {
     display: flex;
     flex-direction: column;
