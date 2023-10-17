@@ -2,8 +2,14 @@ from flask import Flask, render_template, request, url_for,redirect
 import json
 import requests
 import ast
+import os
+from dotenv import load_dotenv
 
-app = Flask('Recipe',template_folder='app/templates',
+load_dotenv()
+
+
+app = Flask(os.getenv('APP_NAME'),
+            template_folder='app/templates',
             static_folder='app/static')
 
 @app.route('/')
@@ -92,8 +98,8 @@ def contact():
 
 def querry_api(querry_string =None, select_category=None):
     
-    app_key  = 'ce7b607fd4979d30ac028afd9897275d'
-    app_id = "142ecb9c"
+    app_key  = os.getenv('API_KEY')
+    app_id = os.getenv('API_ID')
     param = {
         'app_id' : app_id,
         'api_key':app_key
@@ -113,24 +119,11 @@ def querry_api(querry_string =None, select_category=None):
     data = json.loads(resp.text)
     return data
 
-    
-
-    # diet = ['high-protein','low-carb','low-fat', 'low-sodium', 'balanced', 'high-fiber']
-    # base_url = 'https://api.edamam.com/api/recipes/v2?type=public&app_id={}&app_key={}&imageSize=REGULAR'.format(app_id,app_key)
-    # base_url = 'https://api.edamam.com/api/recipes/v2?type=public&app_id={}&app_key={}&q=Sweet'.format(app_id,app_key)
-    # base_url = 'https://api.edamam.com/api/recipes/v2?type=public&app_id={}&app_key={}&ingr=1-2'.format(app_id,app_key)
-    # base_url = 'https://api.edamam.com/api/recipes/v2?type=public&app_id={}&app_key={}&diet=low-fat'.format(app_id,app_key)
-    # base_url = 'https://api.edamam.com/api/recipes/v2?type=public&app_id={}&app_key={}&calories=100-200'.format(app_id,app_key)
-
 def query_uri(url):
-    # diet = 'diets'
-    # url="http://www.edamam.com/ontologies/edamam.owl#recipe_bd9abdc18478824909938628dcc574aa"
     
-    app_key  = "ce7b607fd4979d30ac028afd9897275d"
-    app_id = "142ecb9c"
-    # uri= 'https://api.edamam.com/api/recipes/v2/by-uri?type=public&app_id=142ecb9c&app_key=ce7b607fd4979d30ac028afd9897275d&uri={}'.format(url)
-    # url ='https://api.edamam.com/api/recipes/v2/by-uri?type=public&uri={}&app_id=142ecb9c&app_key=ce7b607fd4979d30ac028afd9897275d'.format(uri)
-
+    app_key  = os.getenv('API_KEY')
+    app_id = os.getenv('API_ID')
+    
     param = {
         'app_id' : app_id,
         'api_key':app_key,
@@ -138,11 +131,7 @@ def query_uri(url):
     }
     base_url = "https://api.edamam.com/api/recipes/v2/by-uri?type=public&app_id={}&app_key={}&uri={}".format(app_id,app_key,url)
     resp = requests.get(base_url,params=param)
-    # print(uri)
     data = json.loads(resp.text)
-    # print(resp)
-
-    # print(data)
     return data
 
 
