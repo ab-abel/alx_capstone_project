@@ -159,7 +159,6 @@ function displayCart(){
     }
 }
 
-
 // send local storage data to backend
 //  add uri to the cart li
 function send_cart_to_backend(){
@@ -208,6 +207,23 @@ function update_cart_from_storage(){
         if (Number(cart_value[i]) < 1 || cart_value[i] === undefined){
             // location.reload();
             // console.log(typeof(cart_value[i]));
+            data_to_send = getCartFromStorage();
+            fetch('/cart', {
+                method:'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data_to_send), 
+                
+            }).then(response=>{
+                    
+                if(response.redirected){
+                    // console.log(response.url[0])
+                    window.location.href = response.url;
+                }else{
+                    response.json();  
+                }
+            });
         }
     }
 }
