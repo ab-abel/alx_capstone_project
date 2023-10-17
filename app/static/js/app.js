@@ -22,32 +22,40 @@ select.addEventListener('change', (e)=>{
         span.setAttribute('onclick',"this.parentElement.style.display='none'")
         
     }
-
+    else if(select.value == 2){
+        const span = document.createElement('span');
+        span.setAttribute('class', 'close-alert');
+        span.innerHTML = '&times;';
+       
+        const p = document.createElement('p');
+        p.innerHTML = 'Keyword Hint: Balanced, Low-Sodium, Low-Fat, Low-Carb, High-Protein, High-Fiber';
+        alert.appendChild(span);
+        alert.appendChild(p);
+        span.setAttribute('onclick',"this.parentElement.style.display='none'")
+        
+    }
     else if(select.value == 3) {
         const span = document.createElement('span');
         span.setAttribute('class', 'close-alert');
         span.innerHTML = '&times;';
         span.setAttribute('onclick',"this.parentElement.style.display='none'")
         const p = document.createElement('p');
-        p.innerHTML = 'Hint: Enter 1-3 to search ingredient between that range';
+        p.innerHTML = 'Hint: Enter 1-3 to search ingredients between that range';
         alert.appendChild(span);
         alert.appendChild(p);
     }
 })
 
-// cart
-
-const cart = document.getElementById('cart-btn');
-
+// add all item to cart
+const cart = document.querySelectorAll('#cart-btn');
 if(cart) {
-    cart.addEventListener('click', (e)=> {
-        // e.preventDefault();
-    
-        // add 
-        // console.log(cart.value);
-        addItemToCart(cart.value);
-        // saveScore(cart.value)
-    
+    cart.forEach(item =>{
+        item.addEventListener('click', (e)=> {
+            // e.preventDefault();
+            // console.log(cart.value);
+            addItemToCart(item.value);
+            // saveScore(cart.value)
+        })
     })
 }
 
@@ -76,6 +84,34 @@ function addItemToCart(item) {
     displayCart();
 }
 
+// this function remove an item from storage
+function removeItemfromCart(item){
+
+    // Get current cart object
+    let cart = JSON.parse(localStorage.getItem('cart'));
+
+    // check if the item is part of the object and the object is not empty
+    if(cart.hasOwnProperty(item) && cart[item] > 1){
+
+        // decrement the value of the item if > 1
+        cart[item] = cart[item] - 1;
+
+        // write the current value back to the session storage
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+    // this code block only run if u decreament cart to be less than 1
+    }else if (cart[item] <= 1){
+
+        // remove object to remove item form the cart
+        delete cart[item];
+
+        // replace the cart with the new items
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }
+    // diplay the current cart
+    displayCart();
+}
+
 // Return the avaialble cart from the storage
 function getCartFromStorage() {
 
@@ -101,8 +137,6 @@ function displayCart(){
     cart_display.textContent =''
     const cart = getCartFromStorage();
     
-    
-
     // check if the request retunr empty
     if(cart != null || cart != undefined ){
         // using the Object key loop through the cart
@@ -125,33 +159,75 @@ function displayCart(){
     }
 }
 
+
+// send local storage data to backend
 //  add uri to the cart li
-const add_href = document.getElementById('cart');
-// const cart_li = document.getElementById('');
-// add_href.setAttribute('href', '/cart/1');
-// add_href.setAttribute('value', `${JSON.stringify(getCartFromStorage())}`)
-
-// cart_li.appendChild(add_href);
-console.log(typeof(JSON.stringify(getCartFromStorage())));
-
-add_href.addEventListener('click', ()=>{
-    data_to_send = getCartFromStorage();
-    fetch('/cart', {
-        method:'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data_to_send), 
-        
-    }).then(response=>{
+function send_cart_to_backend(){
+    const add_href = document.getElementById('cart');
+    add_href.addEventListener('click', ()=>{
+        data_to_send = getCartFromStorage();
+        fetch('/cart', {
+            method:'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data_to_send), 
             
-        if(response.redirected){
-            // console.log(response.url[0])
-            window.location.href = response.url;
-        }else{
-            response.json();  
-        }
-     });
+        }).then(response=>{
+                
+            if(response.redirected){
+                // console.log(response.url[0])
+                window.location.href = response.url;
+            }else{
+                response.json();  
+            }
+        });
 
-})
-    
+    })
+}
+
+// render cart count to cart page
+function update_cart_from_storage(){
+    let cart_uri = [];
+    const cart_temp = document.querySelectorAll('#cart-uri');
+
+    cart_temp.forEach(item =>{
+        cart_uri.push(item.href);
+    })
+
+    const cart_value = [];
+    const stored_data = getCartFromStorage();
+    for (let [key, value] of Object.entries(stored_data)) {
+        cart_value.push(value);
+    }
+
+    for (let i = 0; i < cart_uri.length; i++){
+        const cart_counter_temp = document.querySelectorAll('.cart-counter');
+        cart_counter_temp[i].textContent = cart_value[i];
+        // console.log(typeof(cart_value[i]));
+        if (Number(cart_value[i]) < 1 || cart_value[i] === undefined){
+            // location.reload();
+            // console.log(typeof(cart_value[i]));
+        }
+    }
+}
+
+
+// decreament cart item caller
+function remove_cart(){
+    const remove_cart_item_btn = document.querySelectorAll('#remove-cart-item-btn');
+    if(remove_cart_item_btn){
+        remove_cart_item_btn.forEach(item => {
+            item.addEventListener('click',(e)=>{
+                e.preventDefault();
+                removeItemfromCart(item.value);
+                update_cart_from_storage();
+            });
+        });
+    }
+}
+
+displayCart();
+send_cart_to_backend();
+update_cart_from_storage();
+remove_cart();

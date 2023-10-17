@@ -375,6 +375,7 @@ font-size: var(--font-size-x-large);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
     /* width: 200px; */
 }
 
@@ -688,6 +689,7 @@ footer p {
         .header-form button {
             font-size: var(--font-size-medium);
         }
+
     }
     /* Screen 375px */
 
@@ -771,12 +773,14 @@ footer p {
 }
 .cart-counter {
     position: absolute;
-    color:--color-primary;
+    color:var(--color-button);
+    font-weight: bold;
     background: #F7F7F7;
     width: 100px;
     font-size:var(--font-size-x-large);
     text-align: center;
     /* padding: 1.2rem; */
+    background: rgba(0,0,0,0.5);
 
 }
 
@@ -814,4 +818,24 @@ footer p {
   
   .card button:hover, a:hover {
     opacity: 0.7;
-  }
+
+    
+}    
+
+/* contact form */
+
+.conact-form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.conact-form form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+    padding-top: 1rem;
+    margin: 1rem;
+}
