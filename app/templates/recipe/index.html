@@ -4,10 +4,10 @@
 {% block main %}
     <section class="top-recipe">
         <div class="top-recipe-header">
-            <h1><b style="color:#8FC646">Top</b> Recipe</h1>
+            <h1><b style="color:#8FC646">Top 10</b> Recipe</h1>
         </div>
         <div class="top-recipe-items">
-            {% for i in range(6) %}
+            {% for i in range(10) %}
             <div class="top-recipe-item">
                 
                 <img class="cart-image" src="{{results['hits'][i]['recipe']['images']['SMALL']['url']}}" alt="Recipe image">
