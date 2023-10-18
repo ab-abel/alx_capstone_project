@@ -8,12 +8,12 @@
 </div>
 <div class="details">
     <div class="detail-header">
-        <h2>Product details</h2>
+        <h1><b style="color:#8FC646">Product </b>details</h1>
     </div>
     <div class="detail-body">
         {% for result in results['hits'] %}
             <div class="detail-body-row">
-                <img style="width:200px"src="{{result['recipe']['images']['SMALL']['url']}}" alt="Product image"/>
+                <img style="width:300px"src="{{result['recipe']['images']['REGULAR']['url']}}" alt="Product image"/>
                 <div class="table-container">
                     <table>
                         <tr>
