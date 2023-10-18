@@ -228,8 +228,11 @@ def contact():
 def browse():
     # get post data using request
     data = request.get_json()
-    
-    data = favourites.add_favourite(data)
+    # check if result already in db
+    if not favourites.get_item(data):
+        data_resp = favourites.add_favourite(data)
+    else:
+        pass
     return render_template('')
 
 @app.route('/favourite')
