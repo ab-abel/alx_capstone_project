@@ -14,7 +14,12 @@
                 <span class="cart-counter">
                 </span>
                 
-                <h2><a href="{{results['hits'][i]['recipe']['uri']}}" style="color:black; hover::color:green">{{results['hits'][i]['recipe']['label']}}</a></h2>
+                <h2><form action="/details" method="POST" style="margin:0;padding:0;">
+                    <input type="text" name='item-details' value="{{results['hits'][i]['recipe']['uri']}}" hidden>
+                    <a href="#" onclick="this.parentNode.submit()" style="color:black; hover::color:green">
+                        {{results['hits'][i]['recipe']['label']}}
+                    </a></form>
+                </h2>
                 <p>Source: {{results['hits'][i]['recipe']['source']}} | {{results['hits'][i]['recipe']['ingredients']|length}} Ingredients</p>
                 <div class="top-recipe-item-btn">
                     <button style="margin-right:.1rem" class="button" id="fav-btn" value="{{results['hits'][i]['recipe']['uri']}}">Add to Fav <i class="fa fa-heart"></i></button></form>
