@@ -33,4 +33,5 @@ def create_db():
     except sqlalchemy.exc.ProgrammingError as e:
         print(f"An Error occured: {e}")
 
+# call the session method
 session = create_db()
