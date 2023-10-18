@@ -722,6 +722,7 @@ footer p {
     align-items: center;
     margin-top: 5rem;
     margin-bottom: 5rem;
+    font-size: var(--font-size-large);
 
 }
 
@@ -737,6 +738,7 @@ footer p {
 }
 .detail-body-row p {
     padding-left: 1rem;
+    
 }
 .detail-header {
     padding-top: 1rem;
@@ -747,8 +749,9 @@ footer p {
   table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 40%;
+    width: 100%;
     margin: 0 auto;
+    font-size: var(--font-size-large);
     /* display: flex; */
     /* margin-top: -10%; */
   }
