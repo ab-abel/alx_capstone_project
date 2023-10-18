@@ -1,20 +1,16 @@
-from db import session
-from model import Favourite
+from core.db import session
+from core.model import Favourite
 
 
 def getfirst_item():
     results = session.query(Favourite).first()
-    if results is not None:
-        print(f"{results.id}: {results.favourites}")
-    else:
-        print("Nothing")
+    session.close()
+    return results
 
 def get_all():
     results = session.query(Favourite).all()
-    print(results)
-
-    for result in results:
-        print(f"{result.id}: {result.favourites}")
+    session.close()
+    return results
 
 def add_favourite(favourite_uri):
     fav = Favourite(favourites =favourite_uri)
@@ -30,4 +26,5 @@ def remove_uri(uri_id):
 
 # get_all()
 # getfirst_item()
-remove_uri(2)
+# remove_uri(1)
+# remove_uri(3)

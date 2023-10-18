@@ -7,12 +7,10 @@
             <h1><b style="color:#8FC646">Your <i class="fa fa-shopping-cart"></i> </b> Favourite </h1>
         </div>
         <div class="top-recipe-items">
-            {% for i in range(results_count|length) %}
+            {% for i in range(results|length) %}
             <div class="top-recipe-item">
                 <img class="cart-image" src="{{results[i]['hits'][0]['recipe']['images']['SMALL']['url']}}" alt="Recipe image">
-                    <span class="cart-counter" id="cart-counter" >
-                        
-                    </span>
+                   
                 <h2>
                     <a id="cart-uri" href="{{results[i]['hits'][0]['recipe']['uri']}}" style="color:black; hover::color:green">
                         {{results[i]['hits'][0]['recipe']['label']}}
@@ -26,5 +24,6 @@
             </div>
             {%endfor%}
         </div>
+        
     </section>
 {%endblock%}

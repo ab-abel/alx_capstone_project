@@ -9,18 +9,22 @@
         <div class="top-recipe-items">
             {% for i in range(6) %}
             <div class="top-recipe-item">
-                <img src="{{results['hits'][i]['recipe']['images']['SMALL']['url']}}" alt="Recipe image">
+                
+                <img class="cart-image" src="{{results['hits'][i]['recipe']['images']['SMALL']['url']}}" alt="Recipe image">
+                <span class="cart-counter">
+                </span>
+                
                 <h2><a href="{{results['hits'][i]['recipe']['uri']}}" style="color:black; hover::color:green">{{results['hits'][i]['recipe']['label']}}</a></h2>
                 <p>Source: {{results['hits'][i]['recipe']['source']}} | {{results['hits'][i]['recipe']['ingredients']|length}} Ingredients</p>
                 <div class="top-recipe-item-btn">
-                    <button style="margin-right:.1rem"  class="button">Add to Fav <i class="fa fa-heart"></i></button>
+                    <button style="margin-right:.1rem" class="button" id="fav-btn" value="{{results['hits'][i]['recipe']['uri']}}">Add to Fav <i class="fa fa-heart"></i></button></form>
                     <button style="margin-left:.1rem" id='cart-btn' value="{{results['hits'][i]['recipe']['uri']}}" class="button">Add to Cart <i class="fa fa-shopping-cart"></i></button>
                 </div>
             </div>
             {%endfor%}
         </div>
     </section>
-
+    
     <section class="recipe-count">
         <div class="recipe-count-items">  
             <h1>More than <em style="color:#8FC646">{{results['count']}}</em> Recipe</h1>

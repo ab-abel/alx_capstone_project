@@ -4,6 +4,7 @@ import requests
 import ast
 import os
 from dotenv import load_dotenv
+from core import favourites
 
 # load evironmental files
 load_dotenv()
@@ -223,9 +224,23 @@ def contact():
 
 
 # favourtite route
+@app.route('/browse', methods=['POST'])
+def browse():
+    # get post data using request
+    data = request.get_json()
+    
+    data = favourites.add_favourite(data)
+    return render_template('')
 
-
-
+@app.route('/favourite')
+def favourite():
+    results = favourites.get_all()
+    api_data = []
+    for result in results:
+        api_data.append(query_uri(result.favourites))
+    # print(api_data)
+    return render_template('favourite/home.html', results=api_data)
+    
 def querry_api(querry_string=None, select_category=None):
     '''
     Make ApI call to the 

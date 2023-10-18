@@ -244,6 +244,48 @@ function remove_cart(){
     }
 }
 
+
+
+const fav_button = document.querySelectorAll('#fav-btn');
+
+if(fav_button) {
+    for (const [key, value] of Object.entries(fav_button)){
+        value.addEventListener('click', (e)=> {
+            document.querySelectorAll('.cart-counter')[key].innerHTML =''
+        // send_fav_to_backend(JSON.stringify(value.value));
+         const value_str = String(value.value)
+
+        //  this keep throwing
+         send_fav_to_backend(value_str);
+        // item added succesfully
+
+        let fav_response = document.querySelectorAll(".cart-counter");
+        let fav_i = document.createElement('p');
+        fav_i.textContent = 'Added'
+        fav_response[key].appendChild(fav_i);
+        })
+    }
+}
+
+function send_fav_to_backend(value){
+
+    fetch('/browse', {
+        method:'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(value), 
+        
+    }).then(response=>{
+            
+        if(response.redirected){
+            window.location.href = response.url;
+        }else{
+            response.json();  
+        }
+    });
+}
+
 displayCart();
 send_cart_to_backend();
 update_cart_from_storage();

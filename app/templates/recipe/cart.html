@@ -20,7 +20,7 @@
                 </h2>
                 <p>Source: {{results[i]['hits'][0]['recipe']['source']}} | {{results[i]['hits'][0]['recipe']['ingredients']|length}} Ingredients</p>
                 <div class="top-recipe-item-btn">
-                    <button style="margin-right:.1rem"  class="button">Add to Favourite <i class="fa fa-heart"></i></button>
+                    <button style="margin-right:.1rem"  class="button" id="fav-btn" value="{{results[i]['hits'][0]['recipe']['uri']}}">Add to Favourite <i class="fa fa-heart"></i></button>
                     <button style="margin-left:.1rem" id='remove-cart-item-btn' value="{{results[i]['hits'][0]['recipe']['uri']}}"  class="button">Remove from Cart <i class="fa fa-shopping-cart"></i></button>
                 </div>
             </div>
