@@ -319,4 +319,5 @@ def query_uri(url):
 
 # run the code
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.url_map.strict_slashes = False
+    app.run(host='0.0.0.0', debug=True)
