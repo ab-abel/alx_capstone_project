@@ -43,7 +43,7 @@ def add_favourite(favourite_uri):
     '''
     Get add item to db
     Parmaeter: 
-        id
+        id:String
     return:
         none
     '''
@@ -60,10 +60,22 @@ def remove_uri(uri_id):
     '''
     Remove item from DB
     Parmaeter: 
-        id
+        id:String
     return:
         none
     '''
     # call get the emelent and delete
     session.query(Favourite).filter(Favourite.id == uri_id).delete()
     session.commit()
+
+def get_item(id):
+    '''
+    get item from db using ID
+    Parmaeter: 
+        id:String
+    return:
+        object
+    '''
+    results = session.query(Favourite).filter(Favourite.favourites == id).first()
+    session.close()
+    return results
