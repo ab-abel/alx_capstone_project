@@ -1,6 +1,5 @@
 '''
-Write a python file that contains the class definition of a State
-and an instance Base = declarative_base()
+This module use the class created from ORM lesson
 '''
 # Import Modules from ORM
 from sqlalchemy import Column, Integer, String, MetaData, Table
@@ -9,10 +8,11 @@ from sqlalchemy.ext.declarative import declarative_base
 # define Base class for table class inheritance
 Base = declarative_base()
 
+# create meta data from database schema
 meta = MetaData()
 favourite = Table('favourites', meta,
                   Column('id', Integer, primary_key=True,
-                         autoincrement=True, 
+                         autoincrement=True,
                          unique=True, nullable=False),
                   Column('favourites', String,
                          nullable=False)
