@@ -274,6 +274,10 @@ nav {
     width: 200px;
     
 }
+.top-recipe-item-img img {
+    width: 100%;
+    position: relative;
+}
 
 
 .top-recipe-item h2{
@@ -841,3 +845,14 @@ footer p {
     padding-top: 1rem;
     margin: 1rem;
 }
+
+.fa-check-circle-o {
+    opacity: 1;
+    animation: fade 2s linear;
+    }
+
+
+@keyframes fade {
+    0%,100% { opacity: 0 }
+    50% { opacity: 1 }
+    }
