@@ -6,7 +6,9 @@
         <div class="top-recipe-header">
             <h1><b style="color:#8FC646">Top 10</b> Recipe</h1>
         </div>
-        <div class="top-recipe-items">
+
+        <div class="top-recipe-items"> 
+            
             {% for i in range(10) %}
             <div class="top-recipe-item">
                 
@@ -25,6 +27,7 @@
                     <button style="margin-right:.1rem" class="button" id="fav-btn" value="{{results['hits'][i]['recipe']['uri']}}">Add to Fav <i class="fa fa-heart"></i></button></form>
                     <button style="margin-left:.1rem" id='cart-btn' value="{{results['hits'][i]['recipe']['uri']}}" class="button">Add to Cart <i class="fa fa-shopping-cart"></i></button>
                 </div>
+                
             </div>
             {%endfor%}
         </div>
