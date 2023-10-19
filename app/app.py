@@ -5,6 +5,8 @@ import ast
 import os
 from dotenv import load_dotenv
 from core import favourites
+import requests
+import jinja2
 
 # load evironmental files
 load_dotenv()
@@ -13,6 +15,7 @@ load_dotenv()
 app = Flask(os.getenv('APP_NAME'),
             template_folder='app/templates',
             static_folder='app/static')
+
 
 # route for index page
 @app.route('/')
@@ -31,6 +34,7 @@ def hello():
     # pass data to view
     return render_template('recipe/index.html',results =data)
 
+
 # route for home page sama as index
 @app.route('/home')
 def home():
@@ -42,8 +46,13 @@ def home():
             data Object
             View
     '''
-    data = querry_api()
-    return render_template('recipe/index.html',results =data)
+    try:
+        data = querry_api()
+        # print(data)
+        
+        return render_template('recipe/index.html',results =data)
+    except:
+        return render_template('error/404.html')
 
 # for test during dev remove before deployment
 @app.route('/test')
@@ -74,11 +83,14 @@ def detail():
     # get form data from form
     uri = request.form['item-details']
     
-    # pass the param to the api
-    data = query_uri(uri)
-    
-    # return view and data
-    return render_template('recipe/detail.html', results = data)
+    try:
+        # pass the param to the api
+        data = query_uri(uri)
+        
+        # return view and data
+        return render_template('recipe/detail.html', results = data)
+    except:
+        return render_template('error/404.html')
 
 
 # cart object for post
@@ -96,6 +108,7 @@ def cart():
     
     # call the display cart function
     return redirect(url_for('cart_display', data = data))
+
 
 # call the display url header
 @app.route('/cart_display')
@@ -131,11 +144,14 @@ def cart_display():
     else:
           cart_dict_v = []
           cart_dict_k = []
-    
-    #  return the view with data
-    return render_template('recipe/cart.html',
-                           results = cart_dict_v,
+    try:
+        #  return the view with data
+        return render_template('recipe/cart.html',
+                            results = cart_dict_v,
                            results_count = cart_dict_k)
+    except:
+        return render_template('error/404.html')
+        
 
 # Url for search results
 @app.route('/search',  methods=['POST'])
@@ -157,6 +173,7 @@ def process_data():
     return redirect(url_for('search_recipe',
                             search = data['search'],
                             select=data['selected_option']))
+
 
 # search recipe
 @app.route('/search_recipe')
@@ -196,6 +213,7 @@ def search_recipe():
                            results = results,
                            search=search)
 
+
 # route for about page
 @app.route('/about')
 def about():
@@ -208,6 +226,7 @@ def about():
             View
     '''
     return render_template('profile/about.html')
+
 
 # reurn contact page
 @app.route('/contact')
@@ -235,15 +254,21 @@ def browse():
         pass
     return render_template('')
 
+
 @app.route('/favourite')
 def favourite():
-    results = favourites.get_all()
-    api_data = []
-    for result in results:
-        api_data.append(query_uri(result.favourites))
-    # print(api_data)
-    return render_template('favourite/home.html', results=api_data)
-    
+    try:
+        results = favourites.get_all()
+        api_data = []
+        for result in results:
+            api_data.append(query_uri(result.favourites))
+        # print(api_data)
+        
+        return render_template('favourite/home.html', results=api_data)
+    except:
+        return render_template('error/404.html')
+
+
 def querry_api(querry_string=None, select_category=None):
     '''
     Make ApI call to the 
@@ -276,15 +301,19 @@ def querry_api(querry_string=None, select_category=None):
     else:
         base_url = 'https://api.edamam.com/api/recipes/v2?type=public&app_id={}&app_key={}&diet=balanced'.format(app_id,app_key)    
    
-    # querry api
-    resp = requests.get(base_url, params=param)
+    try:
+        # querry api
+        resp = requests.get(base_url, params=param)
 
-    # convert to json
-    data = json.loads(resp.text)
+        # convert to json
+        data = json.loads(resp.text)
 
-    # return api data
-    return data
-
+        # return api data
+        return data
+    except requests.exceptions.ConnectionError as e:
+        print('', e)
+        data = {'connection':'Not connected! Please check your internet connectivity'}
+        return data
 
 # make api call using uri
 def query_uri(url):
@@ -309,16 +338,20 @@ def query_uri(url):
 
     # format base uri
     base_url = "https://api.edamam.com/api/recipes/v2/by-uri?type=public&app_id={}&app_key={}&uri={}".format(app_id,app_key,url)
-
+   
+    try:
     # make call API
-    resp = requests.get(base_url, params=param)
+        resp = requests.get(base_url, params=param)
 
-    # convert to json
-    data = json.loads(resp.text)
+        # convert to json
+        data = json.loads(resp.text)
 
-    # return data
-    return data
-
+        # return data
+        return data
+    except requests.exceptions.ConnectionError as e:
+        print('', e)
+        data = {'connection':'Not connected! Please check your internet connectivity'}
+        return data
 
 # run the code
 if __name__ == '__main__':
