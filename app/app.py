@@ -28,11 +28,14 @@ def hello():
             data Object
             View
     '''
-    # call the querry api method
-    data = querry_api()
-    
-    # pass data to view
-    return render_template('recipe/index.html',results =data)
+    try:
+        # call the querry api method
+        data = querry_api()
+        
+        # pass data to view
+        return render_template('recipe/index.html',results =data)
+    except:
+        return render_template('error/404.html')
 
 
 # route for home page sama as index
@@ -352,6 +355,7 @@ def query_uri(url):
         print('', e)
         data = {'connection':'Not connected! Please check your internet connectivity'}
         return data
+
 
 # run the code
 if __name__ == '__main__':
