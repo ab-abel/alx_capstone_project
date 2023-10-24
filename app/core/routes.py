@@ -107,7 +107,7 @@ def cart():
     data = request.get_json()
     
     # call the display cart function
-    return redirect(url_for('cart_display', data = data))
+    return redirect(url_for('core.cart_display', data = data))
 
 
 # call the display url header
@@ -170,7 +170,7 @@ def process_data():
     data = request.get_json()
     
     #  redirect to the search page
-    return redirect(url_for('search_recipe',
+    return redirect(url_for('core.search_recipe',
                             search = data['search'],
                             select=data['selected_option']))
 
