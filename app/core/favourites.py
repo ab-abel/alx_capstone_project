@@ -65,7 +65,7 @@ def remove_uri(uri_id):
         none
     '''
     # call get the emelent and delete
-    session.query(Favourite).filter(Favourite.id == uri_id).delete()
+    session.query(Favourite).filter(Favourite.favourites == uri_id).delete()
     session.commit()
 
 def get_item(id):
