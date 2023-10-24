@@ -286,7 +286,6 @@ def remove_fav():
         return render_template('error/404.html')
 
 
-
 def querry_api(querry_string=None, select_category=None):
     '''
     Make ApI call to the 
