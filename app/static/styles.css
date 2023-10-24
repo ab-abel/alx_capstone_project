@@ -738,10 +738,15 @@ footer p {
 }
 .detail-body-row p {
     padding-left: 1rem;
+    /* margin: 1rem; */
     
 }
 .detail-header {
     padding-top: 1rem;
+}
+
+.detail-header p {
+    margin: .5rem;
 }
 
   /* table styles */
