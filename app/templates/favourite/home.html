@@ -4,7 +4,7 @@
 {% block main %}
     <section class="top-recipe">
         <div class="top-recipe-header">
-            <h1><b style="color:#8FC646">Your <i class="fa fa-shopping-cart"></i> </b> Favourite </h1>
+            <h1><b style="color:#8FC646">Your <i class="fa fa-heart"></i> </b> Favourite </h1>
         </div>
         <div class="top-recipe-items">
             {% for i in range(results|length) %}
@@ -18,7 +18,10 @@
                 </h2>
                 <p>Source: {{results[i]['hits'][0]['recipe']['source']}} | {{results[i]['hits'][0]['recipe']['ingredients']|length}} Ingredients</p>
                 <div class="top-recipe-item-btn">
-                    <button style="margin-right:.1rem"  class="button">Remove from Fav <i class="fa fa-heart"></i></button>
+                    <form method='POST' style="margin:0; padding:0" action="/remove_favourite">
+                        <input type="text" name='favourite-id' value="{{results[i]['hits'][0]['recipe']['uri']}}" hidden/>
+                        <button style="margin-right:.1rem"  class="button">Remove from Fav <i class="fa fa-heart"></i></button>
+                    </form>
                     <button style="margin-left:.1rem" id='remove-cart-item-btn' value="{{results[i]['hits'][0]['recipe']['uri']}}"  class="button">Add to Cart <i class="fa fa-shopping-cart"></i></button>
                 </div>
             </div>
