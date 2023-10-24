@@ -11,7 +11,16 @@
                 <img src="{{result['recipe']['images']['THUMBNAIL']['url']}}" alt="Item thumbnail" />
             </div>
             <div class="search-body">
-                <h2><a href="#" style="color:black; hover::color:green">{{result['recipe']['label']}}</a></h2>
+                <h2>
+                    <form action="/details" method="POST" style="margin:0;padding:0;">
+                        <input type="text" name='item-details' value="{{result['recipe']['uri']}}" hidden>
+                        <a id="cart-uri" href="#" onclick="this.parentNode.submit()" style="color:black; hover::color:green">
+                            {{result['recipe']['label']}}
+                        </a>
+                    </form>
+                </h2>
+
+
                 <p>{{result['recipe']['ingredientLines'][0]}}</p>
                 <div class="rate">
                     <i class="fa fa-star" aria-hidden="true"></i>
