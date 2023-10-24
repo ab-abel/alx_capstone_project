@@ -69,6 +69,7 @@ def test():
     data = querry_api()
     return render_template('recipe/test.html', results = data)
 
+
 # route for page details
 @bp.route('/details', methods=['POST'])
 def detail():
@@ -271,10 +272,15 @@ def favourite():
 
 @bp.route('/remove_favourite', methods=['POST'])
 def remove_fav():
+
     try:
+        # get form uri from
         uri = request.form['favourite-id']
-        print(uri)
+
+        # remove item from favorite
         favourites.remove_uri(uri)
+
+        # redirect method
         return favourite()
     except:
         return render_template('error/404.html')
