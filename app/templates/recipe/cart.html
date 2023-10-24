@@ -14,9 +14,12 @@
                         
                     </span>
                 <h2>
-                    <a id="cart-uri" href="{{results[i]['hits'][0]['recipe']['uri']}}" style="color:black; hover::color:green">
-                        {{results[i]['hits'][0]['recipe']['label']}}
-                    </a>
+                    <form action="/details" method="POST" style="margin:0;padding:0;">
+                        <input type="text" name='item-details' value="{{results[i]['hits'][0]['recipe']['uri']}}" hidden>
+                        <a id="cart-uri" href="#" onclick="this.parentNode.submit()" style="color:black; hover::color:green">
+                            {{results[i]['hits'][0]['recipe']['label']}}
+                        </a>
+                    </form>
                 </h2>
                 <p>Source: {{results[i]['hits'][0]['recipe']['source']}} | {{results[i]['hits'][0]['recipe']['ingredients']|length}} Ingredients</p>
                 <div class="top-recipe-item-btn">
