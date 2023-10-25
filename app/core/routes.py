@@ -5,6 +5,7 @@ import ast
 from core import favourites
 import requests
 import os
+from core.validation import check_if_empty
 
 bp = Blueprint('core', __name__)
 
@@ -192,9 +193,11 @@ def search_recipe():
     # get values from form fields using
     search = request.args.get('search')
     select = request.args.get('select')
-
+    
+   
     # call API with the search field
     results = querry_api(search, select)
+
 
     # format data for view for diet and ingredients
     search_data = ['','','Diets','Ingredients']
