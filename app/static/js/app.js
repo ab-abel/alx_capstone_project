@@ -191,7 +191,8 @@ function update_cart_from_storage(){
     for (let i = 0; i < cart_uri.length; i++){
         const cart_counter_temp = document.querySelectorAll('.cart-counter');
         cart_counter_temp[i].textContent = cart_value[i];
-
+        cart_counter_temp[i].style.color ='#ffffff';
+        
         if (Number(cart_value[i]) < 1 || cart_value[i] === undefined){
             
             // post cart to backend
@@ -279,18 +280,20 @@ const fav_button = document.querySelectorAll('#fav-btn');
 if(fav_button) {
     for (const [key, value] of Object.entries(fav_button)){
         value.addEventListener('click', (e)=> {
-            document.querySelectorAll('.cart-counter')[key].innerHTML =''
-        // send_fav_to_backend(JSON.stringify(value.value));
-         const value_str = String(value.value)
+            document.querySelectorAll('.cart-counter')[key].innerHTML ='';
+            // send_fav_to_backend(JSON.stringify(value.value));
+            const value_str = String(value.value)
 
-        //  this keep throwing
-         send_fav_to_backend(value_str);
-        // item added succesfully
+            //  this keep throwing
+            send_fav_to_backend(value_str);
+            // item added succesfully
 
-        let fav_response = document.querySelectorAll(".cart-counter");
-        let fav_i = document.createElement('p');
-        fav_i.textContent = 'Added'
-        fav_response[key].appendChild(fav_i);
+            let fav_response = document.querySelectorAll(".cart-counter");
+            let fav_i = document.createElement('i');
+            fav_i.style.color = '#ffffff';
+            fav_i.style.animation = 'cart-fader 1s';
+            fav_i.setAttribute('class', 'fa fa-heart');
+            fav_response[key].appendChild(fav_i);
         })
     }
 }

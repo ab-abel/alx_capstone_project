@@ -2,40 +2,43 @@
 
 {% block title %}Search{% endblock %}
 {% block main %}
-
-<div style="margin:10%">
-
+<div class="detail-header">
+    <h1><b style="color:#8FC646">Product </b>details</h1>
 </div>
 <div class="details">
-    <div class="detail-header">
-        <h1><b style="color:#8FC646">Product </b>details</h1>
-    </div>
-    <div class="detail-body">
+
         {% for result in results['hits'] %}
             <div class="detail-body-row">
-                <img style="width:300px"src="{{result['recipe']['images']['REGULAR']['url']}}" alt="Product image"/>
-                <div class="table-container">
-                    <table>
-                        <tr>
-                            <th><p>Ingredients</p></th>
-                        </tr>
-                        {% for ingredient in result['recipe']['ingredients'] %}
-                            <tr>
-                                <td><p>{{ingredient['text']}}</p></td>
-                            </tr>
-                        {% endfor %}
-                    </table>
+                <div class="detail-body-row-img">
+                    <img width=100% src="{{result['recipe']['images']['REGULAR']['url']}}" alt="Product image"/>
                 </div>
+                <div class="detail-body-row-text">
+                    <div class="detail-body-header">
+                        <h3>{{result['recipe']['label']}}</h3>
+                        <p><i>Cuisine Type:</i> {{result['recipe']['cuisineType'][0]}}</p> 
+                        <p><i>Meal Type:</i> {{result['recipe']['mealType'][0]}}</p>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <tr>
+                                <th><p>Ingredients</p></th>
+                            </tr>
+                            {% for ingredient in result['recipe']['ingredients'] %}
+                                <tr>
+                                    <td><p>{{ingredient['text']}}</p></td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                    <div class='detail-btn'>
+                        <button class="button" type="submit" id="fav-btn" value="{{result['recipe']['uri']}}"><i class="fa fa-heart"></i><br>Favourite</button>
+                        <button class="button" id='cart-btn' value="{{result['recipe']['uri']}}" type="submit"><i class="fa fa-shopping-cart"></i><br>Cart</button>
+                    </div>
+                <div>
             </div>
-            <div class="detail-header">
-                <p><b>{{result['recipe']['label']}}</b></p>
-                <p><b>Cuisine Type: </b>{{result['recipe']['cuisineType'][0]}}</p> 
-                <p><b>Meal Type: </b>{{result['recipe']['mealType'][0]}}</p>
-                <button class="button" type="submit" id="fav-btn" value="{{result['recipe']['uri']}}"> Add to Favourite <i class="fa fa-heart"></i></button>
-                <button class="button" id='cart-btn' value="{{result['recipe']['uri']}}" type="submit"> Add to Cart <i class="fa fa-shopping-cart"></i></button>
-            </div>
+
         {%endfor%}
-    </div>
+  
 </div>
 
 {%endblock%}

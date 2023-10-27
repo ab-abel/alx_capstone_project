@@ -10,41 +10,19 @@ select.addEventListener('change', (e)=>{
     document.getElementById('alert').innerHTML = '';
 
     if(select.value == 1){
-        const span = document.createElement('span');
-        span.setAttribute('class', 'close-alert');
-        span.innerHTML = '&times;';
-       
-        const p = document.createElement('p');
-        p.style.margin = 0;
-        p.innerHTML = 'Keyword Hint: American, Asian, British, Chinese, Central Europe, French, India';
-        alert.appendChild(span);
-        alert.appendChild(p);
-        span.setAttribute('onclick',"this.parentElement.style.display='none'")
-        
+        display_hint('Hint: American, Asian, British, Chinese, French,...');
     }
     else if(select.value == 2){
-        const span = document.createElement('span');
-        span.setAttribute('class', 'close-alert');
-        span.innerHTML = '&times;';
-       
-        const p = document.createElement('p');
-        p.innerHTML = 'Keyword Hint: Balanced, Low-Sodium, Low-Fat, Low-Carb, High-Protein, High-Fiber';
-        alert.appendChild(span);
-        alert.appendChild(p);
-        span.setAttribute('onclick',"this.parentElement.style.display='none'")
-        
+        display_hint('Hint: Balanced, Low-Sodium, Low-Fat, Low-Carb,...');
     }
     else if(select.value == 3) {
-        const span = document.createElement('span');
-        span.setAttribute('class', 'close-alert');
-        span.innerHTML = '&times;';
-        span.setAttribute('onclick',"this.parentElement.style.display='none'")
-        const p = document.createElement('p');
-        p.innerHTML = 'Hint: Enter 1-3 to search ingredients between that range';
-        alert.appendChild(span);
-        alert.appendChild(p);
+        display_hint('Hint: Enter 1-3 to search ingredients between that range');
+    }
+    else if(select.value == 0) {
+        alert.style.animation = 'fade-out 2s';
     }
 })
+
 
 // search btn validation
 const search_btn = document.getElementById('search-btn');
@@ -67,9 +45,7 @@ search_btn.addEventListener('click', (e)=>{
         if (!isNumeric(search)  && isRequired(search) && !isSpecialCharacters(search)){
             isValid = true;
         }else{
-            alert_p.innerHTML = 'Search field must be a non Empty String';
-            alert_p.style.color = 'red';
-            alert_p.style.padding = '.5rem';
+            display_error('Search field must be a non Empty String');
             isValid = false;
         }
         
@@ -78,9 +54,7 @@ search_btn.addEventListener('click', (e)=>{
         if (!isNumeric(search)  && isRequired(search) && !isSpecialCharacters(search)){
             isValid = true;
         }else{
-            alert_p.innerHTML = 'Diet field must be a string and  not empty ';
-            alert_p.style.color = 'red';
-            alert_p.style.padding = '.5rem';
+            display_error('Diet field must be a string and  not empty ');
             isValid = false;
         }
     }
@@ -88,18 +62,14 @@ search_btn.addEventListener('click', (e)=>{
         if(isRequired(search) && !isNumeric(search) && !isSpecialCharacters(search)) {
             isValid = true;
         }else{
-            alert_p.innerHTML = 'Cusine Type Field Must be a String Example: America';
-            alert_p.style.color = 'red';
-            alert_p.style.padding = '.5rem';
+            display_error('Cusine Type Field Must be a String Example: America');
             isValid = false;
         }
     } else if (select_val == 3){
         if(isRequired(search) && isNumeric(search) && !isSpecialCharacters(search)) {
             isValid = true;
         }else{
-            alert_p.innerHTML = 'Ingredient Field must be an integer or a Range of value seprated by -';
-            alert_p.style.color = 'red';
-            alert_p.style.padding = '.5rem';
+            display_error('Ingredient Field must be an integer or a Range of value seprated by -');
             isValid = false;
         }
     }
@@ -134,6 +104,46 @@ search_btn.addEventListener('click', (e)=>{
 });
 
 // helper functions
+/**
+ * 
+ * @param {String} msg 
+ */
+function display_hint(msg){
+    const span = document.createElement('span');
+    span.setAttribute('class', 'close-alert');
+    span.innerHTML = '<i class="fa fa-info"></i>';
+    span.setAttribute('onclick',"this.parentElement.style.display='none'");
+    alert.style.animation = 'fade-in 1s';
+    alert.style.background = 'rgb(57,136,60,0.5)';
+
+
+    const p = document.createElement('p');
+    p.innerHTML = msg;
+    p.style.background = 'rgb(143,198,70,0.5)';
+    alert.appendChild(span);
+    alert.appendChild(p);
+    // span.setAttribute('onclick',"this.parentElement.style.display='none'"); 
+}
+
+function display_error(msg){
+    const span = document.createElement('span');
+    span.setAttribute('class', 'close-alert');
+    
+
+    span.innerHTML = '<i class="fa fa-times"></i>';
+    span.setAttribute('onclick',"this.parentElement.style.display='none'")
+    alert.style.animation = 'fade-in 1s';
+    const p = document.createElement('p');
+    p.style.background = 'rgb(213,0,0,0.5)';
+    alert.style.background = 'rgb(160,0,0,0.5)';
+
+    p.innerHTML = msg;
+    alert.appendChild(span);
+    alert.appendChild(p);
+    span.setAttribute('onclick',"this.parentElement.style.display='none'"); 
+}
+
+
 const isRequired = value => value === '' ? false:true;
 
 /**
