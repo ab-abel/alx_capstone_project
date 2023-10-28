@@ -4,7 +4,8 @@
 {% block main %}
 
 <br>
-    <h2 style="text-align:center; margin-top :2rem">Search result {{results['from']}} to {{results['to']}} of {{results['count']}} for {{search}}</h2>
+<div class="search-container">
+    <h1 style="text-align:center; margin-top :2rem">Search result {{results['from']}} to {{results['to']}} of {{results['count']}} for <i>{{search}}</i></h1>
     {% for result in results['hits'] %}
         <div class="search">
             <div class="search-img">
@@ -32,15 +33,15 @@
                 <p>Calories: {{result['recipe']['calories']|round(2)}} | Total Weight: {{result['recipe']['totalWeight']|round(2)}}</p>
             </div>
             <div class="search-btn">
-                <button class="cart-btn button"  id='cart-btn' value="{{result['recipe']['uri']}}" type="submit">
+                <button class="cart-btn button" width="100%"  id='cart-btn' value="{{result['recipe']['uri']}}" type="submit">
                     <i class="fa fa-shopping-cart"></i><br>Cart
                 </button>
-                <form method='POST' style="margin:0; padding:0" action="/details">
+                <form method='POST'width="100%" style="margin:0; padding:0" action="/details">
                     <input type="text" name='item-details' value="{{result['recipe']['uri']}}" hidden/>
                     <button type="submit" class="button"><i class="fa fa-info-circle"></i><br>Details</button>
                 </form>
             </div>
         </div>
     {% endfor %}
-
+    </div>
 {% endblock %} 
