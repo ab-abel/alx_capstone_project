@@ -14,14 +14,15 @@
                 </div>
                 <div class="detail-body-row-text">
                     <div class="detail-body-header">
-                        <h3>{{result['recipe']['label']}}</h3>
+                        <h2>{{result['recipe']['label']}}</h2>
+                        <br>
                         <p><i>Cuisine Type:</i> {{result['recipe']['cuisineType'][0]}}</p> 
                         <p><i>Meal Type:</i> {{result['recipe']['mealType'][0]}}</p>
                     </div>
                     <div class="table-container">
                         <table>
                             <tr>
-                                <th><p>Ingredients</p></th>
+                                <th><h3>Ingredients</h3></th>
                             </tr>
                             {% for ingredient in result['recipe']['ingredients'] %}
                                 <tr>
@@ -36,6 +37,7 @@
                     </div>
                 <div>
             </div>
+     
 
         {%endfor%}
   
